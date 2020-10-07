@@ -67,9 +67,7 @@ export default function Home() {
     setSearch(e.target.value.toLowerCase());
   }
 
-  const filterProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search)
-  );
+  const filterProducts = products.filter((product) => product.name.toLowerCase().includes(search));
 
   if (filterProducts.length === 0) {
     return (

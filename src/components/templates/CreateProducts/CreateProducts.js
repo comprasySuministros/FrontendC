@@ -46,17 +46,15 @@ export default function CreateProducts() {
           Formulario Creación de Referencias
         </h2>
         <form>
-          {inputs.map((input) => {
-            return (
-              <input
-                key={input.name}
-                className="layout-article_search-icon input_form"
-                name={input.name}
-                placeholder={input.placeholder}
-                type={input.type}
-              />
-            );
-          })}
+          {inputs.map((input) => (
+            <input
+              key={input.name}
+              className="layout-article_search-icon input_form"
+              name={input.name}
+              placeholder={input.placeholder}
+              type={input.type}
+            />
+          ))}
           <div className="layout-article-button">
             <button className="layout-article-button" type="submit">
               Agregar Nuevo Artículo
