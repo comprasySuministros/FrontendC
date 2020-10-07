@@ -67,9 +67,9 @@ export default function Home() {
     setSearch(e.target.value.toLowerCase());
   }
 
-  const filterProducts = products.filter((product) => {
-    return product.name.toLowerCase().includes(search);
-  });
+  const filterProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(search)
+  );
 
   if (filterProducts.length === 0) {
     return (
@@ -110,35 +110,33 @@ export default function Home() {
           />
         </section>
         <section className="layout-article_groupcard">
-          {filterProducts.map((product) => {
-            return (
-              <div className="layout-article_card" key={product.name}>
-                <img src={product.img} alt={product.name} />
-                <span className="information">
-                  <p>
-                    <strong>ID: </strong>
-                    {product.ID}
-                  </p>
-                  <p>
-                    <strong>Nombre: </strong>
-                    {product.name}
-                  </p>
-                  <p>
-                    <strong>Presentación: </strong>
-                    {product.presentation}
-                  </p>
-                  <p>
-                    <strong>Precio: </strong>
-                    {product.price}
-                  </p>
-                  <p>
-                    <strong>Concepto tecnico: </strong>
-                    {product.concept}
-                  </p>
-                </span>
-              </div>
-            );
-          })}
+          {filterProducts.map((product) => (
+            <div className="layout-article_card" key={product.name}>
+              <img src={product.img} alt={product.name} />
+              <span className="information">
+                <p>
+                  <strong>ID: </strong>
+                  {product.ID}
+                </p>
+                <p>
+                  <strong>Nombre: </strong>
+                  {product.name}
+                </p>
+                <p>
+                  <strong>Presentación: </strong>
+                  {product.presentation}
+                </p>
+                <p>
+                  <strong>Precio: </strong>
+                  {product.price}
+                </p>
+                <p>
+                  <strong>Concepto tecnico: </strong>
+                  {product.concept}
+                </p>
+              </span>
+            </div>
+          ))}
         </section>
       </Content>
     </Layout>
