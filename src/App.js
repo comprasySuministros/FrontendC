@@ -6,7 +6,7 @@ export const App = () => (
   <Router>
     <Switch>
       {routes.map((route) => (
-        <RoutesWithSubroutes key={route.component} />
+        <RoutesWithSubroutes key={route.component} {...route} />
       ))}
     </Switch>
   </Router>
@@ -17,7 +17,7 @@ function RoutesWithSubroutes(route) {
     <Route
       path={route.path}
       exact={route.exact}
-      render={() => <route.component routes={route.routes} />}
+      render={(props) => <route.component routes={route.routes} {...props} />}
     />
   );
 }
