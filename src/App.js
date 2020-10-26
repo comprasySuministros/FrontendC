@@ -1,25 +1,19 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import routes from './utils/routes/routes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Home from './components/templates/Home/Home';
+import CreateProducts from './components/templates/CreateProducts/CreateProducts';
 
 export const App = () => (
   <Router>
     <Switch>
-      {routes.map((route) => (
-        <RoutesWithSubroutes key={route.component} {...route} />
-      ))}
+      <Route exact path="/articulos" component={Home} />
+      <Route exact path="/articulos/crear" component={CreateProducts} />
+      <Route exact path="/articulos/actualizar/:id" component={CreateProducts} />
     </Switch>
+    <ToastContainer />
   </Router>
 );
-
-function RoutesWithSubroutes(route) {
-  return (
-    <Route
-      path={route.path}
-      exact={route.exact}
-      render={(props) => <route.component routes={route.routes} {...props} />}
-    />
-  );
-}
 
 export default App;
