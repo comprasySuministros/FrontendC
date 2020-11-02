@@ -60,6 +60,10 @@ export default function CreateProducts() {
     await db.collection('articles').doc().set(linkObject);
   };
 
+  const updatedArticle = async (linkObject) => {
+    await db.collection('articles').doc(id).update(linkObject);
+  };
+
   const getArticleByID = async () => {
     const doc = await db.collection('articles').doc(id).get();
     setValue('IDPS', doc.data().IDPS);
@@ -82,9 +86,14 @@ export default function CreateProducts() {
   };
 
   const onSubmit = () => {
-    toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
-    addArticle(formArticle);
-    reset();
+    if (window.location.pathname.includes('articulos/crear')) {
+      addArticle(formArticle);
+      toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+      reset();
+    } else {
+      updatedArticle();
+      toast('articulo Actualizado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+    }
   };
 
   return (
@@ -109,7 +118,9 @@ export default function CreateProducts() {
           ))}
           <div className="layout-article-button">
             <button className="layout-article-button" type="submit">
-              Agregar Nuevo Artículo
+              {window.location.pathname.includes('articulos/crear')
+                ? 'Agregar Nuevo Artículo'
+                : 'actualizar artículo' }
             </button>
           </div>
         </form>
