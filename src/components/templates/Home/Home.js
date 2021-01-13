@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { Layout } from 'antd';
 import { AiTwotoneDelete, AiFillEdit } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-import { db } from '../../../firebase';
 import './home.scss';
 
 export default function Home() {

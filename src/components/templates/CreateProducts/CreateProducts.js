@@ -3,7 +3,6 @@ import { Layout } from 'antd';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { db } from '../../../firebase';
 import './createProducts.scss';
 
 export default function CreateProducts() {
