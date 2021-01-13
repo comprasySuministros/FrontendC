@@ -1,42 +1,19 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
-import { AiTwotoneDelete, AiFillEdit } from 'react-icons/ai';
-import { toast } from 'react-toastify';
 import './home.scss';
+// import { AiTwotoneDelete, AiFillEdit } from 'react-icons/ai';
+// import { useHistory } from 'react-router-dom';
 
 export default function Home() {
-  const history = useHistory();
+  // const history = useHistory();
   const { Header, Content } = Layout;
   const [search, setSearch] = useState('');
-  const [articles, setArticles] = useState([]);
 
-  const onDeleteArticle = async (id) => {
-    if (window.confirm('are you sure you want to delete this link')) {
-      await db.collection('articles').doc(id).delete();
-      toast('Articulo eliminado', { type: 'error', position: toast.POSITION.TOP_CENTER });
-    }
-  };
-
-  const editArticle = (id) => {
-    history.push(`articulos/actualizar/${id}`);
-  };
-
-  const getArticles = async () => {
-    db.collection('articles').onSnapshot((querySnapshot) => {
-      const docs = [];
-      querySnapshot.forEach((doc) => {
-        docs.push({ ...doc.data(), id: doc.id });
-      });
-      setArticles(docs);
-    });
-  };
-
-  useEffect(() => {
-    getArticles();
-  }, []);
+  // const editArticle = (id) => {
+  //   history.push(`articulos/actualizar/${id}`);
+  // };
 
   function handleProductSearch(e) {
     setSearch(e.target.value.toLowerCase());
@@ -59,7 +36,7 @@ export default function Home() {
           />
         </section>
         <section className="layout-article_groupcard">
-          { articles.map((article) => (
+          {/* { articles.map((article) => (
             <div className="layout-article_card" key={article.Name}>
               <img src={articles.image} alt={article.Name} />
               <span className="information">
@@ -91,7 +68,7 @@ export default function Home() {
                 </button>
               </span>
             </div>
-          ))}
+          ))} */}
         </section>
       </Content>
     </Layout>

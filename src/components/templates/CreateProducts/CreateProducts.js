@@ -55,22 +55,22 @@ export default function CreateProducts() {
     },
   ];
 
-  const addArticle = async (linkObject) => {
-    await db.collection('articles').doc().set(linkObject);
-  };
+  // const addArticle = async (linkObject) => {
+  //   await db.collection('articles').doc().set(linkObject);
+  // };
 
-  const updatedArticle = async (linkObject) => {
-    await db.collection('articles').doc(id).update(linkObject);
-  };
+  // const updatedArticle = async (linkObject) => {
+  //   await db.collection('articles').doc(id).update(linkObject);
+  // };
 
   const getArticleByID = async () => {
-    const doc = await db.collection('articles').doc(id).get();
-    setValue('IDPS', doc.data().IDPS);
-    setValue('Name', doc.data().Name);
-    setValue('Presentation', doc.data().Presentation);
-    setValue('Price', doc.data().Price);
-    setValue('concept', doc.data().concept);
-    setValue('image', doc.data().image);
+    // const doc = await db.collection('articles').doc(id).get();
+    // setValue('IDPS', doc.data().IDPS);
+    // setValue('Name', doc.data().Name);
+    // setValue('Presentation', doc.data().Presentation);
+    // setValue('Price', doc.data().Price);
+    // setValue('concept', doc.data().concept);
+    // setValue('image', doc.data().image);
   };
 
   useEffect(() => {
@@ -84,16 +84,16 @@ export default function CreateProducts() {
     setFormArticle({ ...formArticle, [name]: value });
   };
 
-  const onSubmit = () => {
-    if (window.location.pathname.includes('articulos/crear')) {
-      addArticle(formArticle);
-      toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
-      reset();
-    } else {
-      updatedArticle();
-      toast('articulo Actualizado', { type: 'success', position: toast.POSITION.TOP_CENTER });
-    }
-  };
+  // const onSubmit = () => {
+  //   if (window.location.pathname.includes('articulos/crear')) {
+  //     addArticle(formArticle);
+  //     toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+  //     reset();
+  //   } else {
+  //     updatedArticle();
+  //     toast('articulo Actualizado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+  //   }
+  // };
 
   return (
     <Layout>
@@ -103,7 +103,7 @@ export default function CreateProducts() {
           Formulario Creación de Referencias
         </h2>
         <a href="/articulos"> Home </a>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
           {inputs.map((input) => (
             <input
               className="layout-article_search-icon input_form"
@@ -122,7 +122,7 @@ export default function CreateProducts() {
                 : 'actualizar artículo' }
             </button>
           </div>
-        </form>
+        {/* </form> */}
       </Content>
     </Layout>
   );
