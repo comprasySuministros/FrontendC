@@ -8,7 +8,7 @@ import CreateProducts from './components/templates/CreateProducts/CreateProducts
 export const App = () => (
   <Router>
     <Switch>
-      <Route exact path="/articulos" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/articulos/crear" component={CreateProducts} />
       <Route exact path="/articulos/actualizar/:id" component={CreateProducts} />
     </Switch>
