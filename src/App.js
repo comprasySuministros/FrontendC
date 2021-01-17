@@ -10,7 +10,11 @@ export const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/articulos/crear" component={CreateProducts} />
-      <Route exact path="/articulos/actualizar/:id" component={CreateProducts} />
+      <Route
+        exact
+        path="/articulos/actualizar/:id"
+        component={CreateProducts}
+      />
     </Switch>
     <ToastContainer />
   </Router>
