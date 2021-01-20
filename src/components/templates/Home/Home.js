@@ -41,8 +41,8 @@ export default function Home() {
           />
         </section>
         <section className="layout-article_groupcard">
-          {articles
-             && articles.map((article) => (
+          {articles &&
+            articles.map((article) => (
               <div className="layout-article_card" key={article.name}>
                 <img src={articles.image} alt={article.name} />
                 <span className="information">
