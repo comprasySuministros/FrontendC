@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+// import { useForm } from 'react-hook-form';
+// import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import './createProducts.scss';
 
 export default function CreateProducts() {
   const { Header, Content } = Layout;
-  const {
-    register, handleSubmit, reset, setValue,
-  } = useForm({
-    defaultValues: {
-      IDPS: '',
-      Name: '',
-      Presentation: '',
-      Price: '',
-      concept: '',
-      image: '',
-    },
-  });
+  // const { register, handleSubmit, reset, setValue } = useForm({
+  //   defaultValues: {
+  //     IDPS: '',
+  //     Name: '',
+  //     Presentation: '',
+  //     Price: '',
+  //     concept: '',
+  //     image: '',
+  //   },
+  // });
   const [formArticle, setFormArticle] = useState();
   const { id } = useParams();
 
@@ -104,24 +102,24 @@ export default function CreateProducts() {
         </h2>
         <a href="/articulos"> Home </a>
         {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-          {inputs.map((input) => (
-            <input
-              className="layout-article_search-icon input_form"
-              key={input.name}
-              name={input.name}
-              onChange={handleChange}
-              placeholder={input.placeholder}
-              type={input.type}
-              ref={register}
-            />
-          ))}
-          <div className="layout-article-button">
-            <button className="layout-article-button" type="submit">
-              {window.location.pathname.includes('articulos/crear')
-                ? 'Agregar Nuevo Artículo'
-                : 'actualizar artículo' }
-            </button>
-          </div>
+        {inputs.map((input) => (
+          <input
+            className="layout-article_search-icon input_form"
+            key={input.name}
+            name={input.name}
+            onChange={handleChange}
+            placeholder={input.placeholder}
+            type={input.type}
+            // ref={register}
+          />
+        ))}
+        <div className="layout-article-button">
+          <button className="layout-article-button" type="submit">
+            {window.location.pathname.includes('articulos/crear')
+              ? 'Agregar Nuevo Artículo'
+              : 'actualizar artículo'}
+          </button>
+        </div>
         {/* </form> */}
       </Content>
     </Layout>
