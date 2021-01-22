@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable operator-linebreak */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
@@ -72,7 +73,7 @@ export default function Home() {
                   <button type="button">
                     <AiFillEdit
                       onClick={() => {
-                        editArticle(article.id);
+                        editArticle(article._id);
                       }}
                     />
                   </button>
