@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from 'antd';
-import { useForm } from 'react-hook-form';
 // import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import './createProducts.scss';
+import { useFormik } from 'formik';
 import useInitialState from '../../../utils/hooks/initialState';
 
 export default function CreateProducts() {
@@ -12,18 +12,13 @@ export default function CreateProducts() {
   const API = `https://backend-c.chestergalindo.vercel.app/api/articles/${id}`;
   const initialState = useInitialState(API);
   const article = initialState.data;
-  // console.log(`afuera ${article && article.IdPS}`);
-
-  const [formArticle, setFormArticle] = useState();
-  // reset,
-  const { register, handleSubmit, setValue } = useForm({
-    defaultValues: {
-      IDPS: '',
-      Name: '',
-      Presentation: '',
-      Price: '',
-      concept: '',
-      image: '',
+  // const [formArticle, setFormArticle] = useState();
+  const formik = useFormik({
+    initialValues: {
+      IdPS: '',
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -61,12 +56,11 @@ export default function CreateProducts() {
   // ];
 
   const getArticleByID = () => {
-    setValue('IDPS', 'hola');
-    //   // setValue('Name', article && article.name);
-    //   // setValue('Presentation', article && article.presentation);
-    //   // setValue('Price', article && article.Price);
-    //   // setValue('concept', article && article.concept);
-    //   // setValue('image', article && article.image);
+    // setValue('Name', article && article.name);
+    // setValue('Presentation', article && article.presentation);
+    // setValue('Price', article && article.Price);
+    // setValue('concept', article && article.concept);
+    // setValue('image', article && article.image);
   };
 
   useEffect(() => {
@@ -76,20 +70,20 @@ export default function CreateProducts() {
     }
   }, [id]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormArticle({ ...formArticle, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormArticle({ ...formArticle, [name]: value });
+  // };
 
-  const onSubmit = () => {
-    // if (window.location.pathname.includes('articulos/crear')) {
-    //   addArticle(formArticle);
-    //   toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
-    //   reset();
-    // } else {
-    //   updatedArticle();
-    //   toast('articulo Actualizado', { type: 'success', position: toast.POSITION.TOP_CENTER });
-  };
+  // const onSubmit = () => {
+  // if (window.location.pathname.includes('articulos/crear')) {
+  //   addArticle(formArticle);
+  //   toast('Nuevo articulo creado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+  //   reset();
+  // } else {
+  //   updatedArticle();
+  //   toast('articulo Actualizado', { type: 'success', position: toast.POSITION.TOP_CENTER });
+  // };
 
   return (
     <Layout>
@@ -99,16 +93,16 @@ export default function CreateProducts() {
           Formulario Creación de Referencias
         </h2>
         <a href="/"> Home </a>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={formik.handleSubmit}>
           {/* {inputs.map((input) => ( */}
           <input
             className="layout-article_search-icon input_form"
             key="IDPS"
             name="IdPS"
-            onChange={handleChange}
+            onChange={formik.handleChange}
             placeholder="ID de Artículo"
             type="number"
-            ref={register}
+            value={formik.values.IdPS}
           />
           {/* // ))} */}
           <div className="layout-article-button">
