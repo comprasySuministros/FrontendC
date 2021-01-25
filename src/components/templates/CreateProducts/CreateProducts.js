@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 // import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import './createProducts.scss';
 import useInitialState from '../../../utils/hooks/initialState';
 
@@ -11,11 +12,17 @@ export default function CreateProducts() {
   const API = `https://backend-c.chestergalindo.vercel.app/api/articles/${id}`;
   const initialState = useInitialState(API);
   const article = initialState.data;
+  const { register, handleSubmit } = useForm({});
+  console.log(article);
+  const onSubmit = (data) => console.log(data);
 
-  const handleChange = () => {
-    // const { name, value } = e.target;
-    // setFormArticle({ ...formArticle, [name]: value });
-  };
+  // useEffect( async () => {
+  //   if (id) {
+  //     // setValue('IdPS', article && article.IdPS);
+  //     // setValue('name', 'cesar');
+  //     }
+  //   }
+  // }, [id]);
 
   return (
     <Layout>
@@ -25,15 +32,16 @@ export default function CreateProducts() {
           Formulario Creación de Referencias
         </h2>
         <a href="/"> Home </a>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             className="layout-article_search-icon input_form"
             key="IdPS"
             name="IdPS"
             placeholder="ID de Artículo"
             type="number"
-            value={article && article.IdPS}
-            onChange={handleChange}
+            // value={article && article.name}
+            onChange={register}
+            ref={register}
           />
           <input
             className="layout-article_search-icon input_form"
@@ -41,8 +49,9 @@ export default function CreateProducts() {
             name="name"
             placeholder="Nombre de Artículo"
             type="text"
-            value={article && article.name}
-            onChange={handleChange}
+            // value={article && article.name}
+            onChange={register}
+            ref={register}
           />
           <input
             className="layout-article_search-icon input_form"
@@ -50,8 +59,9 @@ export default function CreateProducts() {
             name="presentation"
             placeholder="Unidad de medida"
             type="text"
-            value={article && article.presentation}
-            onChange={handleChange}
+            // value={article && article.presentation}
+            onChange={register}
+            ref={register}
           />
           <input
             className="layout-article_search-icon input_form"
@@ -59,8 +69,9 @@ export default function CreateProducts() {
             name="price"
             placeholder="Precio"
             type="number"
-            value={article && article.Price}
-            onChange={handleChange}
+            // value={article && article.Price}
+            onChange={register}
+            ref={register}
           />
           <input
             className="layout-article_search-icon input_form"
@@ -68,8 +79,9 @@ export default function CreateProducts() {
             name="concept"
             placeholder="concepto tecnico"
             type="text"
-            value={article && article.concept}
-            onChange={handleChange}
+            // value={article && article.concept}
+            onChange={register}
+            ref={register}
           />
           <div className="layout-article-button">
             <button className="layout-article-button" type="submit">
