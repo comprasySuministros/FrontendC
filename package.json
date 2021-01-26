@@ -24,6 +24,7 @@
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.5",
     "react-icons": "^3.10.0",
+    "react-query": "^3.6.0",
     "react-router-dom": "^5.2.0",
     "react-toastify": "^6.0.9",
     "sass-loader": "^9.0.2",
