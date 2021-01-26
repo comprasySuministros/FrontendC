@@ -1,20 +1,37 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable operator-linebreak */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
+// eslint-disable-next-line object-curly-newline
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import './home.scss';
 import { AiTwotoneDelete, AiFillEdit } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
-import useInitialState from '../../../utils/hooks/initialState';
+import { useQuery } from 'react-query';
+import API from '../../../utils/api';
 
 export default function Home() {
   const history = useHistory();
   const { Header, Content } = Layout;
   const [search, setSearch] = useState('');
-  const API = 'https://backend-c.chestergalindo.vercel.app/api/articles';
-  const initialState = useInitialState(API);
-  const articles = initialState.data;
+  // eslint-disable-next-line object-curly-newline
+  const { isLoading, isError, data, error } = useQuery('todos', () =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    // eslint-disable-next-line comma-dangle
+    // eslint-disable-next-line implicit-arrow-linebreak
+    // eslint-disable-next-line comma-dangle
+    fetch(API).then((res) => res.json())
+  );
+  // eslint-disable-next-line function-paren-newline
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>`Error: ${error.message}`</span>;
+  }
 
   const editArticle = (id) => {
     history.push(`articulos/actualizar/${id}`);
@@ -41,10 +58,10 @@ export default function Home() {
           />
         </section>
         <section className="layout-article_groupcard">
-          {articles &&
-            articles.map((article) => (
+          {data &&
+            data.data.map((article) => (
               <div className="layout-article_card" key={article.name}>
-                <img src={articles.image} alt={article.name} />
+                <img src="none" alt={article.name} />
                 <span className="information">
                   <p>
                     <strong>ID: </strong>
