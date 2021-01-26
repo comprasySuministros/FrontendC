@@ -19,8 +19,6 @@ export default function Home() {
   const { isLoading, isError, data, error } = useQuery('todos', () =>
     // eslint-disable-next-line implicit-arrow-linebreak
     // eslint-disable-next-line comma-dangle
-    // eslint-disable-next-line implicit-arrow-linebreak
-    // eslint-disable-next-line comma-dangle
     fetch(API).then((res) => res.json())
   );
   // eslint-disable-next-line function-paren-newline
