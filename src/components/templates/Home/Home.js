@@ -2,7 +2,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable operator-linebreak */
-// eslint-disable-next-line object-curly-newline
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import './home.scss';
